@@ -1,26 +1,40 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
 const app = express()
 const port = process.env.PORT || 4000
-app.post('/webhook', (req, res) => res.sendStatus(200))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.post('/webhook', (req, res) => {
+    let reply_token = req.body.events[0].replyToken
+    reply(reply_token)
+    res.sendStatus(200)
+})
 app.listen(port)
-
-
-server()
-
-    // เพิ่มส่วนของ Webhook เข้าไป
-    .post('/webhook', function (req, res) {
-        let replyToken = req.body.events[0].replyToken;
-        let msg = req.body.events[0].message.text;
-
-        console.log(`Message token : ${replyToken}`);
-        console.log(`Message from chat : ${msg}`);
-
-        res.json({
-            status: 200,
-            message: `Webhook is working!`
-        });
+function reply(reply_token) {
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+    }
+    let body = JSON.stringify({
+        replyToken: reply_token,
+        messages: [{
+            type: 'text',
+            text: 'Hello'
+        },
+        {
+            type: 'text',
+            text: 'How are you?'
+        }]
     })
-    .listen(PORT, () => console.log(`Listening on ${PORT}`));
+    request.post({
+        url: 'https://api.line.me/v2/bot/message/reply',
+        headers: headers,
+        body: body
+    }, (err, res, body) => {
+        console.log('status = ' + res.statusCode);
+    });
+}
 
 // /**
 //  * @author Pamontep Panya
