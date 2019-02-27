@@ -12,7 +12,7 @@
  * @desc A sample project of Node.js and Line API
 */
 const server = require('express');
-const PORT = process.env.PORT || 9999;
+const PORT = process.env.PORT || 8080;
 const request = require('request');
 const bodyParser = require('body-parser');
 
