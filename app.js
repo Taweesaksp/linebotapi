@@ -1,6 +1,5 @@
-var http = require('http');
-http.createServer(function (req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('yes you can\n');
-}).listen(8000);
-console.log("server running port 8000");
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 4000
+app.post('/webhook', (req, res) => res.sendStatus(200))
+app.listen(port)
