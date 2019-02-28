@@ -59,16 +59,19 @@
 // }
 
 
-const request = require('request');
-app.post('/webhook', function (req, res) {
+const request = require('request')
+const port = process.env.PORT || 4000
+app.post('/webhook', (req, res) => {
     var text = req.body.events[0].message.text;
     var userId = req.body.events[0].source.userId;
     if (text == "Hello") {
         var msg = [{
-            type: 'text', text: 'สวสัดี'
+            type: 'text',
+            text: 'สวสัดี'
         }]; PushMessage(userId, text, msg);
     } res.sendStatus(200);
 });
+app.listen(port)
 
 function PushMessage(userId, text, msg) {
     let data = {
