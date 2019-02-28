@@ -61,20 +61,25 @@
 
 const request = require('request');
 app.post('/webhook', function (req, res) {
-    var text = req.body.events[0].message.text; var userId = req.body.events[0].source.userId; if (text == "Hello") {
+    var text = req.body.events[0].message.text;
+    var userId = req.body.events[0].source.userId;
+    if (text == "Hello") {
         var msg = [{
-            type: 'text', text: 'สวสัดีคะ่'
+            type: 'text', text: 'สวสัดี'
         }]; PushMessage(userId, text, msg);
     } res.sendStatus(200);
 });
 
 function PushMessage(userId, text, msg) {
-    let data = { to: userId, messages: msg }
+    let data = {
+        to: userId,
+        messages: msg
+    }
     var ChannelAccessToken = 'UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=';
     request({
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer {${ChannelAccessToken}}`
+            'Authorization': 'Bearer {${ChannelAccessToken}}'
         },
         url: 'https://api.line.me/v2/bot/message/push',
         method: 'POST',
