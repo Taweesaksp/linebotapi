@@ -63,7 +63,7 @@ const request = require('request')
 const port = process.env.PORT || 4000
 app.post('/webhook', (req, res) => {
     var text = req.body.events[0].message.text;
-    var userId = req.body.events[0].source.userId;
+    var userId = "U93f0ab5384c81496cb14b0de52af58e9";
     if (text == "Hello") {
         var msg = [{
             type: 'text',
