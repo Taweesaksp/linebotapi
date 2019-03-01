@@ -105,7 +105,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
     var text = req.body.events[0].message.text
-    let reply_token = req.body.events[0].replyToken
+    var reply_token = req.body.events[0].replyToken
     // if (text == "มิวสิค") {
     reply(reply_token);
     // }
