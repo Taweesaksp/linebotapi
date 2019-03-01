@@ -160,10 +160,6 @@ function reply(reply_token) {
                 "type": "text",
                 "text": "Bnk"
             },
-            {
-                "type": "text",
-                "text": "48"
-            }
         ]
     }
     request.post({
