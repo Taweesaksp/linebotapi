@@ -104,18 +104,27 @@ const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
-    var text = req.body.events[0].message.text;
-    var userId = "U93f0ab5384c81496cb14b0de52af58e9";
-    let reply_token = req.body.events[0].replyToken
-    let msg = req.body.events[0].message.text
-    PushMessage(userId, text, msg);
+    // var text = "88";
+    // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
+    // let reply_token = req.body.events[0].replyToken
+    // let msg = "99"
+    PushMessage();
     res.sendStatus(200)
 })
 app.listen(port)
-function PushMessage(userId, text, msg) {
+function PushMessage() {
     let data = {
-        to: userId,
-        messages: msg
+        "to": "U93f0ab5384c81496cb14b0de52af58e9",
+        "messages": [
+            {
+                "type": "text",
+                "text": "คำว่าเพื่อนมันสั้น"
+            },
+            {
+                "type": "text",
+                "text": "Hello, world2"
+            }
+        ]
     }
 
     request({
