@@ -153,7 +153,7 @@ function reply(reply_token) {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
     }
-    let body = JSON.stringify({
+    let body = {
         "replyToken": reply_token,
         "messages": [
             {
@@ -165,7 +165,7 @@ function reply(reply_token) {
                 "text": "48"
             }
         ]
-    })
+    }
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
         headers: headers,
