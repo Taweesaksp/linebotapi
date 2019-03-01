@@ -103,7 +103,7 @@ const app = express()
 const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-var text = req.body.events[0].message.text;
+var text = req.body.events[0].message.text
 let reply_token = req.body.events[0].replyToken
 app.post('/webhook', (req, res) => {
     // if (text == "มิวสิค") {
