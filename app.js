@@ -59,20 +59,57 @@
 // }
 
 
-const request = require('request')
-const port = process.env.PORT || 4000
-app.post('/webhook', (req, res) => {
-    var text = req.body.events[0].message.text;
-    var userId = "U93f0ab5384c81496cb14b0de52af58e9";
-    if (text == "Hello") {
-        var msg = [{
-            type: 'text',
-            text: 'สวัสดี'
-        }]; PushMessage(userId, text, msg);
-    } res.sendStatus(200);
-});
-app.listen(port)
+// const request = require('request')
+// const port = process.env.PORT || 4000
+// app.post('/webhook', function (req, res) {
+//     var text = req.body.events[0].message.text;
+//     var userId = "U93f0ab5384c81496cb14b0de52af58e9";
+//     if (text == "Hello") {
+//         var msg = [{
+//             type: 'text',
+//             text: 'สวัสดี'
+//         }]; 
+//         PushMessage(userId, text, msg);
+//     } res.sendStatus(200);
+// });
+// app.listen(port)
 
+// function PushMessage(userId, text, msg) {
+//     let data = {
+//         to: userId,
+//         messages: msg
+//     }
+
+//     request({
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+//         },
+//         url: 'https://api.line.me/v2/bot/message/push',
+//         method: 'POST',
+//         body: data,
+//         json: true
+//     }, function (err, res, body) {
+//         if (err) console.log('error')
+//         if (res) console.log('success')
+//         if (body) console.log(body)
+//     })
+// } 
+
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const app = express()
+const port = process.env.PORT || 4000
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.post('/webhook', (req, res) => {
+    let reply_token = req.body.events[0].replyToken
+    let msg = req.body.events[0].message.text
+    reply(reply_token, msg)
+    res.sendStatus(200)
+})
+app.listen(port)
 function PushMessage(userId, text, msg) {
     let data = {
         to: userId,
