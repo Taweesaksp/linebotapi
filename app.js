@@ -106,9 +106,9 @@ app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
     var text = req.body.events[0].message.text
     let reply_token = req.body.events[0].replyToken
-    // if (text == "มิวสิค") {
-    // reply(reply_token);
-    // }
+    if (text == "มิวสิค") {
+        reply(reply_token);
+    }
     // var text = "88";
     // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
     // let reply_token = req.body.events[0].replyToken
