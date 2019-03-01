@@ -103,7 +103,13 @@ const app = express()
 const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+var text = req.body.events[0].message.text;
+let reply_token = req.body.events[0].replyToken
 app.post('/webhook', (req, res) => {
+    if (text == "มิวสิค") {
+
+        reply(reply_token, text);
+    }
     // var text = "88";
     // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
     // let reply_token = req.body.events[0].replyToken
@@ -141,4 +147,25 @@ function PushMessage() {
         if (res) console.log('success')
         if (body) console.log(body)
     })
-} 
+}
+
+function reply(reply_token, msg) {
+    let headers = {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+    }
+    let body = JSON.stringify({
+        replyToken: reply_token,
+        messages: [{
+            type: 'text',
+            text: msg
+        }]
+    })
+    request.post({
+        url: 'https://api.line.me/v2/bot/message/reply',
+        headers: headers,
+        body: body
+    }, (err, res, body) => {
+        console.log('status = ' + res.statusCode);
+    });
+}
