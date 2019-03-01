@@ -163,8 +163,8 @@ function reply(reply_token) {
         ]
     }
     request.post({
-        url: 'https://api.line.me/v2/bot/message/reply',
         headers: headers,
+        url: 'https://api.line.me/v2/bot/message/reply',
         body: body
     }, function (err, res, body) {
         if (err) console.log('error')
