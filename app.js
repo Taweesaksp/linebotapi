@@ -155,7 +155,6 @@ function reply(reply_token) {
     }
     let body = JSON.stringify({
         "replyToken": reply_token,
-        "to": "U93f0ab5384c81496cb14b0de52af58e9",
         "messages": [
             {
                 "type": "text",
@@ -171,7 +170,9 @@ function reply(reply_token) {
         url: 'https://api.line.me/v2/bot/message/reply',
         headers: headers,
         body: body
-    }, (err, res, body) => {
-        console.log('status = ' + res.statusCode);
-    });
+    }, function (err, res, body) {
+        if (err) console.log('error')
+        if (res) console.log('success')
+        if (body) console.log(body)
+    })
 }
