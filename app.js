@@ -154,11 +154,18 @@ function reply(reply_token) {
         'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
     }
     let body = JSON.stringify({
-        replyToken: reply_token,
-        messages: [{
-            type: 'text',
-            text: 'Music Bnk48'
-        }]
+        "replyToken": reply_token,
+        "to": "U93f0ab5384c81496cb14b0de52af58e9",
+        "messages": [
+            {
+                "type": "text",
+                "text": "Bnk"
+            },
+            {
+                "type": "text",
+                "text": "48"
+            }
+        ]
     })
     request.post({
         url: 'https://api.line.me/v2/bot/message/reply',
