@@ -122,7 +122,7 @@ function PushMessage() {
             },
             {
                 "type": "text",
-                "text": "Hello, world2"
+                "text": "ทุกถ้อยคำพูดจาอ่อนหวาน..."
             }
         ]
     }
