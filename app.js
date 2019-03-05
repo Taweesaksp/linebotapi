@@ -186,7 +186,7 @@ app.use(bodyParser.json())
 
 app.post('/webhook', (req, res) => {
     var text = req.body.events[0].message.text
-    var sender = req.body.events[0].source.userId
+    var sender = "U93f0ab5384c81496cb14b0de52af58e9"
     var replyToken = req.body.events[0].replyToken
     console.log(text, sender, replyToken)
     console.log(typeof sender, typeof text)
