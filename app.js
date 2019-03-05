@@ -104,7 +104,7 @@ const port = process.env.PORT || 4000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
-    // var text = req.body.events[0].message.text
+    var text = req.body.events[0].message.text
     let reply_token = req.body.events[0].replyToken
     // if (text == "มิวสิค") {
     reply(reply_token);
@@ -117,36 +117,36 @@ app.post('/webhook', (req, res) => {
     res.sendStatus(200)
 })
 app.listen(port)
-// function PushMessage() {
-//     let data = {
-//         "to": "U93f0ab5384c81496cb14b0de52af58e9",
-//         "messages": [
-//             {
-//                 "type": "text",
-//                 "text": "Friend"
-//             },
-//             {
-//                 "type": "text",
-//                 "text": "ทุกถ้อยคำพูดจาอ่อนหวาน..."
-//             }
-//         ]
-//     }
+function PushMessage() {
+    let data = {
+        "to": "U93f0ab5384c81496cb14b0de52af58e9",
+        "messages": [
+            {
+                "type": "text",
+                "text": "Friend"
+            },
+            {
+                "type": "text",
+                "text": "ทุกถ้อยคำพูดจาอ่อนหวาน..."
+            }
+        ]
+    }
 
-//     request({
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
-//         },
-//         url: 'https://api.line.me/v2/bot/message/push',
-//         method: 'POST',
-//         body: data,
-//         json: true
-//     }, function (err, res, body) {
-//         if (err) console.log('error')
-//         if (res) console.log('success')
-//         if (body) console.log(body)
-//     })
-// }
+    request({
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+        },
+        url: 'https://api.line.me/v2/bot/message/push',
+        method: 'POST',
+        body: data,
+        json: true
+    }, function (err, res, body) {
+        if (err) console.log('error')
+        if (res) console.log('success')
+        if (body) console.log(body)
+    })
+}
 
 function reply(reply_token) {
     let headers = {
