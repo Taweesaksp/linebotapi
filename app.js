@@ -185,15 +185,24 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.post('/webhook', (req, res) => {
+    // var text = req.body.events[0].message.text
+    // var sender = "U93f0ab5384c81496cb14b0de52af58e9"
+    // var replyToken = req.body.events[0].replyToken
+    // console.log(text, sender, replyToken)
+    // console.log(typeof sender, typeof text)
+    // // console.log(req.body.events[0])
+    // if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
+    //     sendText(sender, text)
+    // }
+    // res.sendStatus(200)
+
     var text = req.body.events[0].message.text
-    var sender = "U93f0ab5384c81496cb14b0de52af58e9"
+    var sender = req.body.events[0].source.userId
     var replyToken = req.body.events[0].replyToken
     console.log(text, sender, replyToken)
     console.log(typeof sender, typeof text)
     // console.log(req.body.events[0])
-    if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
-        sendText(sender, text)
-    }
+    sendText(sender, text)
     res.sendStatus(200)
 })
 
