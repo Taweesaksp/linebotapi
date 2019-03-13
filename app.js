@@ -164,7 +164,7 @@ function reply(reply_token) {
     }
     request.post({
         headers: headers,
-        url: 'https://api.line.me/v2/bot/message/reply',
+        url: 'https://api.line.me/v2/bot/message/push',
         body: body
     }, function (err, res, body) {
         if (err) console.log('error')
