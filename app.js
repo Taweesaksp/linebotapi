@@ -110,8 +110,9 @@ app.post('/webhook', (req, res) => {
     console.log("-----text----" + text);
     console.log("-----reply_token----" + reply_token);
     if (text == "a") {
-        console.log("-----text----" + text);
-        reply(reply_token);
+        // console.log("-----text----" + text);
+        // reply(reply_token);
+        PushMessage();
     }
     else {
         PushMessage();
@@ -131,11 +132,7 @@ function PushMessage() {
         "messages": [
             {
                 "type": "text",
-                "text": "Friend"
-            },
-            {
-                "type": "text",
-                "text": "ทุกถ้อยคำพูดจาอ่อนหวาน..."
+                "text": "Music"
             }
         ]
     }
