@@ -109,18 +109,22 @@ app.post('/webhook', (req, res) => {
     let reply_token = req.body.events[0].replyToken
     console.log("-----text----" + text);
     console.log("-----reply_token----" + reply_token);
-    if (text == "มิวสิค") {
+    if (text == "a") {
         console.log("-----text----" + text);
         reply(reply_token);
+    }
+    else {
+        PushMessage();
     }
     // var text = "88";
     // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
     // let reply_token = req.body.events[0].replyToken
     // let msg = "99"
-    PushMessage();
+
     res.sendStatus(200)
 })
 app.listen(port)
+console.log("****88***" + port);
 function PushMessage() {
     let data = {
         "to": "U93f0ab5384c81496cb14b0de52af58e9",
