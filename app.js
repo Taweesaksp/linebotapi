@@ -96,82 +96,88 @@
 //     })
 // }
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const app = express()
-const port = process.env.PORT || 4000
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.post('/webhook', (req, res) => {
-    var text = req.body.events[0].message.text
-    let reply_token = req.body.events[0].replyToken
-    if (text == "มิวสิค") {
-        reply(reply_token);
-    }
-    // var text = "88";
-    // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
-    // let reply_token = req.body.events[0].replyToken
-    // let msg = "99"
-    PushMessage();
-    res.sendStatus(200)
-})
-app.listen(port)
-function PushMessage() {
-    let data = {
-        "to": "U93f0ab5384c81496cb14b0de52af58e9",
-        "messages": [
-            {
-                "type": "text",
-                "text": "Friend"
-            },
-            {
-                "type": "text",
-                "text": "ทุกถ้อยคำพูดจาอ่อนหวาน..."
-            }
-        ]
-    }
+// const express = require('express')
+// const bodyParser = require('body-parser')
+// const request = require('request')
+// const app = express()
+// const port = process.env.PORT || 4000
+// console.log("****port***" + port);
+// app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(bodyParser.json())
+// app.post('/webhook', (req, res) => {
+//     var text = req.body.events[0].message.text
+//     let reply_token = req.body.events[0].replyToken
+//     console.log("-----text----" + text);
+//     console.log("-----reply_token----" + reply_token);
+//     if (text == "มิวสิค") {
+//         console.log("-----text----" + text);
+//         reply(reply_token);
+//     }
+//     // var text = "88";
+//     // var userId = "U93f0ab5384c81496cb14b0de52af58e9";
+//     // let reply_token = req.body.events[0].replyToken
+//     // let msg = "99"
+//     PushMessage();
+//     res.sendStatus(200)
+// })
+// app.listen(port)
+// function PushMessage() {
+//     let data = {
+//         "to": "U93f0ab5384c81496cb14b0de52af58e9",
+//         "messages": [
+//             {
+//                 "type": "text",
+//                 "text": "Friend"
+//             },
+//             {
+//                 "type": "text",
+//                 "text": "ทุกถ้อยคำพูดจาอ่อนหวาน..."
+//             }
+//         ]
+//     }
 
-    request({
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
-        },
-        url: 'https://api.line.me/v2/bot/message/push',
-        method: 'POST',
-        body: data,
-        json: true
-    }, function (err, res, body) {
-        if (err) console.log('error')
-        if (res) console.log('success')
-        if (body) console.log(body)
-    })
-}
+//     request({
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+//         },
+//         url: 'https://api.line.me/v2/bot/message/push',
+//         method: 'POST',
+//         body: data,
+//         json: true
+//     }, function (err, res, body) {
+//         if (err) console.log('error')
+//         if (res) console.log('success')
+//         if (body) console.log(body)
+//     })
+// }
 
-function reply(reply_token) {
-    let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
-    }
-    let body = {
-        "replyToken": reply_token,
-        "messages": [
-            {
-                "type": "text",
-                "text": "Bnk"
-            },
-        ]
-    }
-    request.post({
-        headers: headers,
-        url: 'https://api.line.me/v2/bot/message/push',
-        body: body
-    }, function (err, res, body) {
-        if (err) console.log('error')
-        if (res) console.log('success')
-        if (body) console.log(body)
-    })
-}
+// function reply(reply_token) {
+//     console.log("-----in--1--");
+//     let headers = {
+//         'Content-Type': 'application/json',
+//         'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+//     }
+//     let body = {
+//         "replyToken": reply_token,
+//         "messages": [
+//             {
+//                 "type": "text",
+//                 "text": "Bnk"
+//             },
+//         ]
+//     }
+//     console.log("-----in--2--");
+//     request.post({
+//         headers: headers,
+//         url: 'https://api.line.me/v2/bot/message/push',
+//         body: body
+//     }, function (err, res, body) {
+//         if (err) console.log('error')
+//         if (res) console.log('success')
+//         if (body) console.log(body)
+//     })
+// }
 
 // var express = require('express')
 // var bodyParser = require('body-parser')
@@ -290,3 +296,57 @@ function reply(reply_token) {
 // app.listen(app.get('port'), function () {
 //     console.log('run at port', app.get('port'))
 // })
+
+var express = require('express')
+var bodyParser = require('body-parser')
+var request = require('request')
+var app = express()
+
+app.use(bodyParser.json())
+
+app.set('port', (process.env.PORT || 4000))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+app.post('/webhook', (req, res) => {
+    var text = req.body.events[0].message.text
+    var sender = req.body.events[0].source.userId
+    var replyToken = req.body.events[0].replyToken
+    console.log(text, sender, replyToken)
+    console.log(typeof sender, typeof text)
+    // console.log(req.body.events[0])
+    if (text === 'สวัสดี' || text === 'Hello' || text === 'hello') {
+        sendText(sender, text)
+    }
+    res.sendStatus(200)
+})
+
+function sendText(sender, text) {
+    let data = {
+        to: sender,
+        messages: [
+            {
+                type: 'text',
+                text: 'สวัสดีค่ะ เราเป็นผู้ช่วยปรึกษาด้านความรัก สำหรับหมามิ้น 💞'
+            }
+        ]
+    }
+    request({
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU='
+        },
+        url: 'https://api.line.me/v2/bot/message/push',
+        method: 'POST',
+        body: data,
+        json: true
+    }, function (err, res, body) {
+        if (err) console.log('error')
+        if (res) console.log('success')
+        if (body) console.log(body)
+    })
+}
+
+app.listen(app.get('port'), function () {
+    console.log('run at port', app.get('port'))
+})
