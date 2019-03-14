@@ -5,10 +5,9 @@
   "engines": {
     "node": "10.x"
   },
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@line/bot-sdk": "^6.6.0",
