@@ -300,7 +300,14 @@
 //     console.log('run at port', app.get('port'))
 // })
 
-const request = require('request');
+const express = require('express')
+const bodyParser = require('body-parser')
+const request = require('request')
+const app = express()
+const port = process.env.PORT || 4000
+console.log("****port***" + port);
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.post('/webhook', function (req, res) {
     var text = req.body.events[0].message.text;
     var userId = req.body.events[0].source.userId;
