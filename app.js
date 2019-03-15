@@ -122,7 +122,7 @@ app.post('/webhook', (req, res) => {
     // let reply_token = req.body.events[0].replyToken
     // let msg = "99"
 
-    res.sendStatus(200)
+    // res.sendStatus(200)
 })
 app.listen(port)
 console.log("****88***" + port);
