@@ -515,7 +515,7 @@ function reply(reply_token) {
     console.log("-----in--1--");
 
     let data = {
-        "replyToken": reply_token,
+        "to": reply_token,
         "messages": [
             {
                 "type": "text",
