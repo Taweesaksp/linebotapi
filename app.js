@@ -469,7 +469,7 @@ app.post('/webhook', (req, res) => {
     // console.log("-----reply_token----" + reply_token);
     if (text == "a") {
         // console.log("-----text----" + text);
-        reply(sender);
+        reply(sender, text);
         // PushMessage();
     }
     else {
@@ -512,28 +512,19 @@ function PushMessage() {
     })
 }
 
-function reply(sender) {
+function reply(sender, text) {
     console.log("-----in--1--");
 
     let data = {
         to: sender,
         messages: [
             {
-                "type": "text",
+                "type": text,
                 "text": "Bnk"
             }
         ]
     }
 
-    // let data = {
-    //     "to": sender,
-    //     "messages": [
-    //         {
-    //             "type": "text",
-    //             "text": "Bnk"
-    //         }
-    //     ]
-    // }
     console.log("-----in--2--");
     request({
         headers: {
