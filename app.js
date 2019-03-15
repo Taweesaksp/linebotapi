@@ -463,12 +463,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.post('/webhook', (req, res) => {
     var text = req.body.events[0].message.text
-    let reply_token = req.body.events[0].replyToken
+    // let reply_token = req.body.events[0].replyToken
+    var sender = req.body.events[0].source.userId;
     console.log("-----text----" + text);
     console.log("-----reply_token----" + reply_token);
     if (text == "a") {
         // console.log("-----text----" + text);
-        reply(reply_token);
+        reply(sender);
         // PushMessage();
     }
     else {
@@ -511,18 +512,28 @@ function PushMessage() {
     })
 }
 
-function reply(reply_token) {
+function reply(sender) {
     console.log("-----in--1--");
 
     let data = {
-        "to": reply_token,
-        "messages": [
+        to: sender,
+        messages: [
             {
                 "type": "text",
                 "text": "Bnk"
             }
         ]
     }
+
+    // let data = {
+    //     "to": sender,
+    //     "messages": [
+    //         {
+    //             "type": "text",
+    //             "text": "Bnk"
+    //         }
+    //     ]
+    // }
     console.log("-----in--2--");
     request({
         headers: {
