@@ -466,7 +466,7 @@ app.post('/webhook', (req, res) => {
     // let reply_token = req.body.events[0].replyToken
     var sender = req.body.events[0].source.userId;
     console.log("-----text----" + text);
-    console.log("-----reply_token----" + reply_token);
+    // console.log("-----reply_token----" + reply_token);
     if (text == "a") {
         // console.log("-----text----" + text);
         reply(sender);
