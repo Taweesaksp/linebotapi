@@ -343,4 +343,7 @@ function PushMessage(userId, text, msg) {
         if (body) console.log(body)
     })
 }
+app.listen(app.get('port'), function () {
+    console.log('run at port', app.get('port'))
+})
 
