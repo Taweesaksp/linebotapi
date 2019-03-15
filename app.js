@@ -520,7 +520,7 @@ function reply(reply_token) {
             {
                 "type": "text",
                 "text": "Bnk"
-            },
+            }
         ]
     }
     console.log("-----in--2--");
