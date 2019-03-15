@@ -519,8 +519,8 @@ function reply(sender, text) {
         to: sender,
         messages: [
             {
-                "type": text,
-                "text": "Bnk"
+                "type": "text",
+                "text": text
             }
         ]
     }
