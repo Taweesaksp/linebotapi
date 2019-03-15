@@ -513,11 +513,8 @@ function PushMessage() {
 
 function reply(reply_token) {
     console.log("-----in--1--");
-    let headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer {M9tAyRc6RQCCq0gJ7He0lZV9LrUYz/+7IqBgIdGGWuMBcQpmkxxlD2ljDWt9lYaJ7U4+mtwzjznLHaV/LDPXlzx4StUN5Rpkxht7x+K1oMiFjC78d5S23B77E0zzeaF1E4TTl3afJr5AA8wMgyQmhAdB04t89/1O/w1cDnyilFU=}'
-    }
-    let body = {
+
+    let data = {
         "replyToken": reply_token,
         "messages": [
             {
@@ -527,10 +524,15 @@ function reply(reply_token) {
         ]
     }
     console.log("-----in--2--");
-    request.post({
-        headers: headers,
+    request({
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer {UfC+kvnTY/FnCX4xlcvUS6rJpw5mPeqHw8inmF+He1FKVxAYvpo3yzIlpajMLq/nhi0j/w+P+nez4OKZtn0Wdd5uVTi7oQDPVCl/WbxpNlu4/rq9ZtSW4xCaChY9ZQCv6IZHznLJLFNoOD4j9CuM1gdB04t89/1O/w1cDnyilFU=}'
+        },
         url: 'https://api.line.me/v2/bot/message/push',
-        body: body
+        method: 'POST',
+        body: data,
+        json: true
     }, function (err, res, body) {
         if (err) console.log('error')
         if (res) console.log('success')
